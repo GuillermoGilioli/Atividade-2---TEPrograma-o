@@ -35,6 +35,14 @@ class ServicoNotas:
         self.alunos[aluno.matricula] = (aluno, notas)
         persistencia.salvar(self.arquivo, self.alunos)
 
+    def remover_aluno(self, matricula):
+        """Remove aluno pelo número da matrícula."""
+        matricula = matricula.strip()
+        if matricula not in self.alunos:
+            raise ValueError(f"Não há aluno com a matrícula {matricula}.")
+        del self.alunos[matricula]
+        persistencia.salvar(self.arquivo, self.alunos)
+
     def listar_turma(self):
         """Devolve a turma ordenada por matrícula, com média e situação."""
         turma = []

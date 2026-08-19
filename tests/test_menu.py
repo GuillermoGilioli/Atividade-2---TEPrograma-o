@@ -8,7 +8,7 @@ def test_menu_cadastra_lanca_e_lista(monkeypatch, capsys, tmp_path):
         [
             "1", "2024001", "Maria Silva",
             "2", "2024001", "10", "10", "5",
-            "3",
+            "4",
             "0",
         ]
     )

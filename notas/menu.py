@@ -37,13 +37,17 @@ def lancar_notas(servico):
         print(f"Erro: {erro}")
 
 
+def remover_aluno(servico):
+    matricula = input("Matrícula do aluno a remover: ").strip()
+    try:
+        servico.remover_aluno(matricula)
+        print(f"Aluno de matrícula {matricula} removido com sucesso.")
+    except ValueError as erro:
+        print(f"Erro: {erro}")
+
+
 def listar_turma(servico):
     turma = servico.listar_turma()
-    if not turma:
-        print("Nenhum aluno cadastrado ainda.")
-        return
-
-    print("\n" + "=" * 70)
     print(
         f"{'MATRÍCULA':<10}{'NOME':<22}{'N1':>6}{'N2':>6}{'N3':>6}"
         f"{'MÉDIA':>8}{'SITUAÇÃO':>12}"
@@ -68,7 +72,8 @@ def menu(servico=None):
     opcoes = {
         "1": ("Cadastrar aluno", cadastrar_aluno),
         "2": ("Lançar notas", lancar_notas),
-        "3": ("Listar turma", listar_turma),
+        "3": ("Remover aluno", remover_aluno),
+        "4": ("Listar turma", listar_turma),
     }
     while True:
         print("\n--- Sistema de Notas ---")
